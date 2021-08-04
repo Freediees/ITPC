@@ -1,0 +1,25 @@
+{
+    "presets": [
+        "module:metro-react-native-babel-preset"
+    ],
+    "plugins": [
+        [
+            "module-resolver",
+            {
+                "root": [
+                    "./src"
+                ],
+                "alias": {
+                    "Screens": "./src/screen",
+                    "Components": "./src/components",
+                    "Theme": "./src/theme",
+                    "API": "./src/api",
+                    "Assets": "./src/assets",
+                    "Organism": "./src/components/organism",
+                    "Molecule": "./src/components/molecule",
+                    "Atom": "./src/components/atom"
+                }
+            }
+        ]
+    ]
+}
