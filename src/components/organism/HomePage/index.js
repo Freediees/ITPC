@@ -12,30 +12,6 @@ import { Icon } from 'native-base'
 const width = Dimensions.get('window').width
 const height = Dimensions.get('window').height
 
-const slides = [
-    {
-        key: 'one',
-        title: 'Title 1',
-        text: 'Description.\nSay something cool',
-        image: require('Assets/images/asset1.jpg'),
-        backgroundColor: '#59b2ab',
-    },
-    {
-        key: 'two',
-        title: 'Title 2',
-        text: 'Other cool stuff',
-        image: require('Assets/images/asset2.jpg'),
-        backgroundColor: '#febe29',
-    },
-    {
-        key: 'three',
-        title: 'Rocket guy',
-        text: 'I\'m already out of descriptions\n\nLorem ipsum bla bla bla',
-        image: require('Assets/images/asset3.jpg'),
-        backgroundColor: '#22bcb5',
-    }
-]
-
 const HomePage = ({ isLoading, data, navigation }) => {
 
     const [activeSlide, setActiveSlide] = useState(0)
@@ -84,19 +60,26 @@ const HomePage = ({ isLoading, data, navigation }) => {
     return (
         <SafeAreaView style={{ flex: 1 }}>
             <Header title="ITPC Barcelona" />
+
+
             {
                 isLoading && !data
-                    ? <SkeletonPlaceholder>
-                        <View style={{ width: '100%', height: 200 }}>
-                            {/* <View style={{ width: 60, height: 60, borderRadius: 50 }} />
-                            <View style={{ marginLeft: 20 }}>
-                                <View style={{ width: 120, height: 20, borderRadius: 4 }} />
-                                <View
-                                    style={{ marginTop: 6, width: 80, height: 20, borderRadius: 4 }}
-                                />
-                            </View> */}
-                        </View>
-                    </SkeletonPlaceholder>
+                    ? <View style={{ flex: 1 }}>
+                        <SkeletonPlaceholder>
+                            <View style={{ width: '100%', height: 300 }} />
+                            <View style={{ padding: 16 }}>
+                                <View style={{ width: '40%', height: 30, borderRadius: 5, marginTop: 15 }} />
+                                <View style={{ width: '60%', height: 30, borderRadius: 5, marginTop: 5 }} />
+                                <View style={{ flexDirection: 'row', height: 120, marginTop: 10 }}>
+                                    <View style={{ height: 100, width: 100, borderRadius: 10, marginRight: 5 }}></View>
+                                    <View style={{ height: 100, width: 100, borderRadius: 10, marginRight: 5 }}></View>
+                                    <View style={{ height: 100, width: 100, borderRadius: 10, marginRight: 5 }}></View>
+                                    <View style={{ height: 100, width: 100, borderRadius: 10, marginRight: 5 }}></View>
+                                </View>
+                            </View>
+
+                        </SkeletonPlaceholder>
+                    </View>
                     : <ScrollView
                         showsHorizontalScrollIndicator={false}
                     >
@@ -137,9 +120,9 @@ const HomePage = ({ isLoading, data, navigation }) => {
                                     {
                                         data?.exporter_home.map((item) => {
                                             return (
-                                                <View style={styles.shadowCard}>
+                                                <TouchableOpacity style={[styles.shadowCard, { marginBottom: 5 }]} onPress={() => { navigation.push('ExportersScreen', { id: item.id }) }}>
                                                     <Image source={{ uri: item.logo }} style={{ width: 100, height: 100 }} resizeMode="contain" />
-                                                </View>
+                                                </TouchableOpacity>
                                             )
                                         })
                                     }
@@ -154,7 +137,7 @@ const HomePage = ({ isLoading, data, navigation }) => {
                                 <Text style={{ fontSize: 14, fontFamily: CFonts.regular }}>Featured Indonesian Exporter</Text>
                             </View>
                             <View style={{ flexDirection: 'row' }}>
-                                <ScrollView horizontal={true} style={{ paddingLeft: 20, paddingRight: 200 }} showsHorizontalScrollIndicator={false}>
+                                <ScrollView horizontal={true} style={{ paddingLeft: 20, paddingRight: 200, marginBottom: 5 }} showsHorizontalScrollIndicator={false}>
                                     {
                                         data?.indonesia_product.map((item) => {
                                             return (
@@ -175,12 +158,17 @@ const HomePage = ({ isLoading, data, navigation }) => {
                             </View>
                             <View style={{ flexDirection: 'row', width: '100%', height: 60, paddingHorizontal: 10 }}>
                                 <View style={{ flex: 1, margin: 5, backgroundColor: Colors.lightGrey, borderRadius: 10, alignItems: 'center', justifyContent: 'center', flexDirection: 'row' }}>
-                                    <Icon type="Ionicons" name="briefcase-outline" size={50} style={{ color: Colors.blue, marginRight: 10 }} />
-                                    <Text>About Us</Text>
+                                    <TouchableOpacity onPress={() => { navigation.push('AboutScreen') }} style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', width: '100%', height: '100%' }}>
+                                        <Icon type="Ionicons" name="briefcase-outline" size={50} style={{ color: Colors.blue, marginRight: 10 }} />
+                                        <Text>About Us</Text>
+                                    </TouchableOpacity>
                                 </View>
                                 <View style={{ flex: 1, margin: 5, backgroundColor: Colors.lightGrey, borderRadius: 10, alignItems: 'center', justifyContent: 'center', flexDirection: 'row' }}>
-                                    <Icon type="Ionicons" name="download-outline" size={50} style={{ color: Colors.blue, marginRight: 10 }} />
-                                    <Text>Contact Us</Text>
+
+                                    <TouchableOpacity onPress={() => { navigation.push('ContactScreen') }} style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', width: '100%', height: '100%' }}>
+                                        <Icon type="Ionicons" name="download-outline" size={50} style={{ color: Colors.blue, marginRight: 10 }} />
+                                        <Text>Contact Us</Text>
+                                    </TouchableOpacity>
                                 </View>
                             </View>
                         </View>
@@ -229,7 +217,8 @@ const styles = StyleSheet.create({
         overflow: 'hidden',
         justifyContent: 'center',
         alignItems: 'center',
-        marginHorizontal: 5
+        marginHorizontal: 5,
+        marginBottom: 5,
     }
 })
 
