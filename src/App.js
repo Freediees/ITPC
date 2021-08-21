@@ -15,13 +15,16 @@ import AboutScreen from './screens/AboutScreen'
 import ContactScreen from './screens/ContactScreen'
 import ExporterListScreen from './screens/ExporterListScreen'
 import LoginScreen from './screens/LoginScreen'
+
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 const OnboardingStack = createStackNavigator()
 const MainStack = createStackNavigator()
 const MainTabs = createBottomTabNavigator()
+
 const HomeStack = createStackNavigator()
 const AccountStack = createStackNavigator()
+const ExportersStack = createStackNavigator()
 
 const OnboardingStackScreen = () => (
     <OnboardingStack.Navigator headerMode={false}>
@@ -39,8 +42,15 @@ const HomeStackScreen = () => (
     </HomeStack.Navigator>
 )
 
+const ExportersStackScreen = () => (
+    <ExportersStack.Navigator initialRouteName="ExportersListScreen" headerMode={false}>
+        <ExportersStack.Screen name="ExportersListScreen" component={ExporterListScreen} />
+        <HomeStack.Screen name="ExportersScreen" component={ExportersScreen} />
+    </ExportersStack.Navigator>
+)
+
 const AccountStackScreen = () => (
-    <AccountStack.Navigator headerMode={false}>
+    <AccountStack.Navigator headerMode={false} initialRouteName={"LoginScreen"}>
         <AccountStack.Screen name={"AccountScreen"} component={AccountScreen} />
         <AccountStack.Screen name={"LoginScreen"} component={LoginScreen} />
     </AccountStack.Navigator>
@@ -55,7 +65,7 @@ const MainTabsScreen = () => (
 
                 if (route.name === 'Home') {
                     iconName = 'home-outline'
-                } else if (route.name === 'Exporters') {
+                } else if (route.name === 'Export') {
                     iconName = 'swap-vertical'
                 } else {
                     iconName = 'person-circle-outline'
@@ -71,7 +81,7 @@ const MainTabsScreen = () => (
         }}
     >
         <MainTabs.Screen name="Home" component={HomeStackScreen} />
-        <MainTabs.Screen name="Exporters" component={ExporterListScreen} />
+        <MainTabs.Screen name="Export" component={ExportersStackScreen} />
         <MainTabs.Screen name="Account" component={AccountStackScreen} />
     </MainTabs.Navigator>
 )

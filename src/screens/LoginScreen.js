@@ -31,8 +31,18 @@ const LoginScreen = () => {
                 console.log(e)
             })
     }
-    useEffect(() => {
 
+    const check = async() => {
+        let token, user_id
+        token = await AsynStorage.getItem('token')
+        user_id = await AsynStorage.getItem('user_id')
+
+        console.log('token', token)
+        console.log('user_id', user_id)
+    }
+
+    useEffect(() => {
+        check()
     }, [])
 
     return (
