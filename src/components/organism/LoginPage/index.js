@@ -7,7 +7,7 @@ import TextInput from 'Atom/customTextInput'
 import { Colors } from 'Theme'
 
 
-const LoginPage = ({ isLoading, onLogin }) => {
+const LoginPage = ({ isLoading, onLogin, onRegister }) => {
 
     const [email, setEmail] = useState("")
     const [pass, setPass] = useState("")
@@ -26,6 +26,7 @@ const LoginPage = ({ isLoading, onLogin }) => {
                 <TextInput containerStyle={{ backgroundColor: 'white' }} iconName={'key-outline'} placeholder={"Password"} onChangeText={(text) => { setPass(text) }} secure={true} />
 
                 <Button label="Login" bgColor={Colors.blue} style={{ margin: 10 }} onPress={() => { onLogin({ email: email, password: pass }) }} />
+                <Button label="Register" bgColor={Colors.ghostWhite} style={{ marginTop: 0 }} textStyle={{ color: Colors.blue }} onPress={() => { onRegister() }} />
             </View>
         </View>
     )

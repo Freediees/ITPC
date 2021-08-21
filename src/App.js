@@ -15,6 +15,7 @@ import AboutScreen from './screens/AboutScreen'
 import ContactScreen from './screens/ContactScreen'
 import ExporterListScreen from './screens/ExporterListScreen'
 import LoginScreen from './screens/LoginScreen'
+import RegisterScreen from './screens/RegisterScreen'
 
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 
@@ -53,6 +54,7 @@ const AccountStackScreen = () => (
     <AccountStack.Navigator headerMode={false} initialRouteName={"LoginScreen"}>
         <AccountStack.Screen name={"AccountScreen"} component={AccountScreen} />
         <AccountStack.Screen name={"LoginScreen"} component={LoginScreen} />
+        <AccountStack.Screen name={"RegisterScreen"} component={RegisterScreen} />
     </AccountStack.Navigator>
 )
 
