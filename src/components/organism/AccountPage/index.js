@@ -38,7 +38,7 @@ const AccountPage = ({ navigation, onLogout, data, isLoading }) => {
                         <View style={{ flex: 1, padding: 16 }}>
                             <Text style={{ fontSize: 18, fontFamily: CFonts.bold, color: 'black', marginBottom: 20 }}>Exporter Profile</Text>
 
-                            <ListItem label="Edit Exporter Profile" onPress={() => { console.log('edit exporter profile') }} icon="edit" type="FontAwesome" />
+                            <ListItem label="Edit Exporter Profile" onPress={() => { navigation.push('AddExporterScreen') }} icon="edit" type="FontAwesome" />
                             <ListItem label="Update Category" onPress={() => { console.log('update category') }} icon="addfile" type="AntDesign" />
                             <ListItem label="Update Product" onPress={() => { console.log('Update product') }} icon="addfile" type="AntDesign" />
                         </View>

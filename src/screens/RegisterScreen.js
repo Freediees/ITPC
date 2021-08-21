@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { View, ActivityIndicator, Alert } from 'react-native'
 import RegisterPage from 'Organism/RegisterPage'
 import axios from 'axios'
-import AsynStorage from '@react-native-async-storage/async-storage'
 
 
 
