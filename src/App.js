@@ -3,6 +3,7 @@ import { View, Text } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import OnboardingScreen from './screens/OnboardingScreen'
 
@@ -13,11 +14,14 @@ import NewsDetailScreen from './screens/NewsDetailScreen'
 import AboutScreen from './screens/AboutScreen'
 import ContactScreen from './screens/ContactScreen'
 import ExporterListScreen from './screens/ExporterListScreen'
+import LoginScreen from './screens/LoginScreen'
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 const OnboardingStack = createStackNavigator()
 const MainStack = createStackNavigator()
 const MainTabs = createBottomTabNavigator()
 const HomeStack = createStackNavigator()
+const AccountStack = createStackNavigator()
 
 const OnboardingStackScreen = () => (
     <OnboardingStack.Navigator headerMode={false}>
@@ -35,11 +39,40 @@ const HomeStackScreen = () => (
     </HomeStack.Navigator>
 )
 
+const AccountStackScreen = () => (
+    <AccountStack.Navigator headerMode={false}>
+        <AccountStack.Screen name={"AccountScreen"} component={AccountScreen} />
+        <AccountStack.Screen name={"LoginScreen"} component={LoginScreen} />
+    </AccountStack.Navigator>
+)
+
 const MainTabsScreen = () => (
-    <MainTabs.Navigator initialRouteName="Home">
+    <MainTabs.Navigator
+        initialRouteName="Home"
+        screenOptions={({ route }) => ({
+            tabBarIcon: ({ focused, color, size }) => {
+                let iconName;
+
+                if (route.name === 'Home') {
+                    iconName = 'home-outline'
+                } else if (route.name === 'Exporters') {
+                    iconName = 'swap-vertical'
+                } else {
+                    iconName = 'person-circle-outline'
+                }
+
+                // You can return any component that you like here!
+                return <Ionicons name={iconName} size={size} color={color} />;
+            },
+        })}
+        tabBarOptions={{
+            activeTintColor: Colors.blue,
+            inactiveTintColor: 'gray',
+        }}
+    >
         <MainTabs.Screen name="Home" component={HomeStackScreen} />
         <MainTabs.Screen name="Exporters" component={ExporterListScreen} />
-        <MainTabs.Screen name="Account" component={AccountScreen} />
+        <MainTabs.Screen name="Account" component={AccountStackScreen} />
     </MainTabs.Navigator>
 )
 
