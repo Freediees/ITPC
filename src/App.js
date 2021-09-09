@@ -17,6 +17,12 @@ import ExporterListScreen from './screens/ExporterListScreen'
 import LoginScreen from './screens/LoginScreen'
 import RegisterScreen from './screens/RegisterScreen'
 import AddExporterScreen from './screens/AddExporterScreen'
+import UpdateCategoryScreen from './screens/UpdateCategoryScreen'
+import UpdateProductScreen from './screens/UpdateProductScreen'
+import InquiryScreen from './screens/InquiryScreen'
+import ListInquiryScreen from './screens/ListInquiryScreen'
+import InquiryDetailScreen from './screens/InquiryDetailScreen'
+import AdditionalScreen from './screens/AdditionalScreen'
 
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 
@@ -57,6 +63,12 @@ const AccountStackScreen = () => (
         <AccountStack.Screen name={"LoginScreen"} component={LoginScreen} />
         <AccountStack.Screen name={"RegisterScreen"} component={RegisterScreen} />
         <AccountStack.Screen name={"AddExporterScreen"} component={AddExporterScreen} />
+        <AccountStack.Screen name={"UpdateCategoryScreen"} component={UpdateCategoryScreen} />
+        <AccountStack.Screen name={"UpdateProductScreen"} component={UpdateProductScreen} />
+        <AccountStack.Screen name={"InquiryScreen"} component={InquiryScreen} />
+        <AccountStack.Screen name={"ListInquiryScreen"} component={ListInquiryScreen} />
+        <AccountStack.Screen name={"InquiryDetailScreen"} component={InquiryDetailScreen} />
+        <AccountStack.Screen name={"AdditionalScreen"} component={AdditionalScreen} />
     </AccountStack.Navigator>
 )
 

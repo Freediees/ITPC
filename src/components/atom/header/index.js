@@ -3,14 +3,15 @@ import { View, Text, TouchableOpacity } from 'react-native'
 import { Colors } from 'Theme'
 import { Icon } from 'native-base'
 
-const Header = ({ style, title, onBackPress, rightText, rightPress }) => {
+const Header = ({ style, title, onBackPress, rightText, rightPress, backTitle }) => {
     return (
         <View style={[{ width: '100%', height: 60, backgroundColor: Colors.blue, justifyContent: 'center', alignItems: 'center', flexDirection: 'row' }, style]}>
             {
 
                 onBackPress ?
-                    <TouchableOpacity style={{ padding: 5, position: 'absolute', left: 16 }} onPress={onBackPress}>
+                    <TouchableOpacity style={{ padding: 5, position: 'absolute', left: 16, flexDirection: 'row' }} onPress={onBackPress}>
                         <Icon type="Ionicons" name="arrow-back" style={{ fontSize: 25, color: 'white' }} />
+                        <Text>{backTitle}</Text>
                     </TouchableOpacity>
                     : null
             }

@@ -1,9 +1,9 @@
 import React from 'react'
 import ContactPage from 'Organism/ContactPage'
 
-const ContactScreen = () => {
+const ContactScreen = ({ navigation }) => {
     return (
-        <ContactPage />
+        <ContactPage navigation={navigation}/>
     )
 }
 

@@ -21,9 +21,10 @@ const HomePage = ({ isLoading, data, navigation }) => {
     }
 
     const _renderItem = ({ item, index }) => {
+        console.log('item', item)
         return (
             <View style={{ width: width }}>
-                <Image source={{ uri: item.thumbnail }} style={{ width: width, height: 200 }} resizeMode={'cover'} />
+                <Image source={{ uri: item.thumbnail }} style={{ width: width, aspectRatio: 1 }} resizeMode={'contain'} />
                 <View style={{ width: '100%', height: 150, backgroundColor: Colors.blue, padding: 16 }}>
                     <Text style={{ color: 'white', fontSize: 16, height: 70 }} numberOfLines={3}>{item.title}</Text>
                     <Button label={'See more'} style={{ width: 100, backgroundColor: Colors.secondary, flex: 1 }} textStyle={{ fontSize: 14 }} onPress={() => { onPressButton(item.id) }} />

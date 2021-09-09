@@ -17,7 +17,7 @@ const ListItem = ({ label, onPress, icon, type }) => {
     )
 }
 
-const AccountPage = ({ navigation, onLogout, data, isLoading }) => {
+const AccountPage = ({ navigation, onLogout, data, isLoading, exporter, category, sub }) => {
 
 
     return (
@@ -36,12 +36,24 @@ const AccountPage = ({ navigation, onLogout, data, isLoading }) => {
                             <Text style={{ fontSize: 12, fontFamily: CFonts.regular, color: Colors.blue }}>Edit Account</Text>
                         </View>
                         <View style={{ flex: 1, padding: 16 }}>
-                            <Text style={{ fontSize: 18, fontFamily: CFonts.bold, color: 'black', marginBottom: 20 }}>Exporter Profile</Text>
+                            <Text style={{ fontSize: 16, fontFamily: CFonts.bold, color: 'black', marginBottom: 20 }}>Exporter Profile</Text>
 
-                            <ListItem label="Edit Exporter Profile" onPress={() => { navigation.push('AddExporterScreen') }} icon="edit" type="FontAwesome" />
-                            <ListItem label="Update Category" onPress={() => { console.log('update category') }} icon="addfile" type="AntDesign" />
-                            <ListItem label="Update Product" onPress={() => { console.log('Update product') }} icon="addfile" type="AntDesign" />
+                            <ListItem label="Edit Exporter Profile" onPress={() => { !!exporter.length > 0 && navigation.push('AddExporterScreen', { exporter: exporter[0] }) }} icon="edit" type="FontAwesome" />
+                            <ListItem label="Update Category" onPress={() => { navigation.push('UpdateCategoryScreen') }} icon="addfile" type="AntDesign" />
+                            <ListItem label="Update Product" onPress={() => { navigation.push('UpdateProductScreen') }} icon="addfile" type="AntDesign" />
+
+                            {
+                                data?.inquery_menu
+                                    ? <View style={{ marginTop: 30 }}>
+                                        <Text style={{ fontSize: 16, fontFamily: CFonts.bold, color: 'black', marginBottom: 20 }}>Create Inquiry</Text>
+                                        <ListItem label="Add Inquiry" onPress={() => { navigation.push('InquiryScreen', { category: category, sub: sub }) }} icon="addfile" type="AntDesign" />
+                                        <ListItem label="Inquiry List" onPress={() => { navigation.push('ListInquiryScreen') }} icon="addfile" type="AntDesign" />
+                                    </View>
+                                    : null
+                            }
                         </View>
+
+
                     </View>
             }
 

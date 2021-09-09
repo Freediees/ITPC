@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { View, Text, Image, StyleSheet } from 'react-native'
+import { View, Text, Image, StyleSheet, ActivityIndicator } from 'react-native'
 import AppIntroSlider from 'react-native-app-intro-slider';
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import Button from 'Atom/button'
@@ -38,7 +38,6 @@ const OnboardingPage = ({ navigation }) => {
 
     useEffect(async () => {
         setInitial(await AsyncStorage.getItem('initial'))
-        console.log('initial', await AsyncStorage.getItem('initial'))
         setRun(true)
     }, [])
 
@@ -91,8 +90,8 @@ const OnboardingPage = ({ navigation }) => {
             } else {
                 _onDone()
                 return (
-                    <View style={{ flex: 1 }}>
-
+                    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                        <ActivityIndicator size="large" color={Colors.blue} />
                     </View>
                 )
             }
