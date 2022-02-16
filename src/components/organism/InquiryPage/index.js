@@ -11,16 +11,16 @@ const AddExporterPage = ({ navigation, data, category, sub, onPostData }) => {
 
 
 
-    const [companyName, setCompanyName] = useState(data.exporter_name || "")
+    const [companyName, setCompanyName] = useState(data?.exporter_name || "")
     const [title, setTitle] = useState("")
-    const [address, setAddress] = useState(data.exporter_address || "")
+    const [address, setAddress] = useState(data?.exporter_address || "")
     const [detail, setDetail] = useState("")
     const [capacity, setCapacity] = useState("")
     const [exportStatus, setExportStatus] = useState("")
 
-    const [name, setName] = useState(data.username || "")
-    const [email, setEmail] = useState(data.email || "")
-    const [phone, setPhone] = useState(data.exporter_phone || "")
+    const [name, setName] = useState(data?.username || "")
+    const [email, setEmail] = useState(data?.email || "")
+    const [phone, setPhone] = useState(data?.exporter_phone || "")
 
     const [selectedCat, setSelectedCat] = useState("")
     const [selectedSub, setSelectedSub] = useState("")

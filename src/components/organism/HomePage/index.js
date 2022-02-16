@@ -8,6 +8,7 @@ import Button from 'Atom/button'
 import { CFonts } from 'Assets/FontConstant'
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Icon } from 'native-base'
+import AutoHeightImage from 'react-native-auto-height-image';
 
 const width = Dimensions.get('window').width
 const height = Dimensions.get('window').height
@@ -21,10 +22,9 @@ const HomePage = ({ isLoading, data, navigation }) => {
     }
 
     const _renderItem = ({ item, index }) => {
-        console.log('item', item)
         return (
             <View style={{ width: width }}>
-                <Image source={{ uri: item.thumbnail }} style={{ width: width, aspectRatio: 1 }} resizeMode={'contain'} />
+                <AutoHeightImage source={{ uri: item.thumbnail }} width={width} />
                 <View style={{ width: '100%', height: 150, backgroundColor: Colors.blue, padding: 16 }}>
                     <Text style={{ color: 'white', fontSize: 16, height: 70 }} numberOfLines={3}>{item.title}</Text>
                     <Button label={'See more'} style={{ width: 100, backgroundColor: Colors.secondary, flex: 1 }} textStyle={{ fontSize: 14 }} onPress={() => { onPressButton(item.id) }} />
@@ -103,7 +103,7 @@ const HomePage = ({ isLoading, data, navigation }) => {
                                                 setActiveSlide(index)
                                             }}
                                         />
-                                        <View style={{ position: 'absolute', top: 130, alignItems: 'center', width: '100%' }}>
+                                        <View style={{ position: 'absolute', bottom: 150, alignItems: 'center', width: '100%' }}>
                                             {getPagination()}
                                         </View>
                                     </View>
